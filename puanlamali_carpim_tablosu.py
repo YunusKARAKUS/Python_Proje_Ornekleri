@@ -66,9 +66,9 @@ def carpim(a,b):
             seviye=int(seviye)
             seviye -=1
             seviye=str(seviye)
+            print("seviyeniz düsürülüyor...")
             if seviye=="0": 
                 print("programdan cikiliyor...")
-            print("seviyeniz düsürülüyor...")
             yanlis_sayisi=0
             dogru_sayisi=0
             
