@@ -1,1 +1,1 @@
-# Python-Proje-rnekleri
+# Python-Proje-Ornekleri
