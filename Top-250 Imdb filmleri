@@ -1,1 +1,24 @@
 
+import requests
+from bs4 import BeautifulSoup
+
+response=requests.get("https://www.imdb.com/chart/top/")
+icerik=response.content
+html_parsed_icerik=BeautifulSoup(icerik,"html.parser")
+
+film_isimleri=[]
+ratingler=[]
+
+for i in html_parsed_icerik.find_all("td",{"class":"titleColumn"}):
+    i=i.text.strip(" ")
+    i=i.strip("\n") #alınan isimlerin daha güzel görünmesi için düzenlemeler yapılmıştır.
+    i=i.replace("\n"," ")
+    film_isimleri.append(i) 
+    
+for i in html_parsed_icerik.find_all("td",{"class":"ratingColumn imdbRating"}):
+    i=i.text.strip(" ")
+    i=i.strip("\n") # alınan film puanlarının daha güzel görünmesi için düzenlemeler yapılmıştır.
+    ratingler.append(i)
+    
+for i,j in zip(film_isimleri,ratingler):
+    print(i.ljust(100,"-")+"> "+j)
